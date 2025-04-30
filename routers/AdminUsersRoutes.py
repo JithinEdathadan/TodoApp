@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from TodoApp.Database import Database
 from sqlalchemy.orm import Session
 from typing import Annotated
@@ -9,8 +9,8 @@ from TodoApp.schemas.UserUpdateSchema import UserUpdateSchema
 from TodoApp.services.AuthServices import AuthServices
 
 router = APIRouter(
-    prefix="/user",
-    tags=['User']
+    prefix="/admin/user",
+    tags=['Admin']
 )
 
 db_object = Database()
@@ -25,9 +25,13 @@ admin_dependency = Annotated[bool,Depends(auth_services_obj.is_current_user_admi
 user_services = UserServices()
 
 @router.get("/",status_code=status.HTTP_200_OK)
-async def get_user_info(user:user_dependency,db:db_dependency):
-    return user_services.get_user_by_id(db,user.get('id'))
+async def get_all_users(is_admin:admin_dependency,db:db_dependency):
+    if not is_admin:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail='Authorisation failed')
+    return user_services.get_all_users(db)
 
-@router.put("/",status_code=status.HTTP_204_NO_CONTENT)
-async def update_user(user:user_dependency,db:db_dependency,user_request_data:UserUpdateSchema,is_admin:admin_dependency):
-    return user_services.update_user(db,user_request_data,user.get('id'),is_admin)
+@router.put("/{user_id}",status_code=status.HTTP_204_NO_CONTENT)
+async def update_user(db:db_dependency,user_request_data:UserUpdateSchema,is_admin:admin_dependency,user_id:int):
+    if not is_admin:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail='Authorisation failed')
+    return user_services.update_user(db,user_request_data,user_id,is_admin)

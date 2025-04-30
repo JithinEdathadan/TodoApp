@@ -13,6 +13,10 @@ class UserServices:
     db_object = Database()
     db_dependency = Annotated[Session, Depends(db_object.get_db)]
 
+    # get all users info
+    def get_all_users(self,db:db_dependency):
+        return db.query(UsersModel).all()
+
     # get user data by user_id
     def get_user_by_id(self,db:db_dependency,user_id:int):
         user_model = db.query(UsersModel).filter(UsersModel.id == user_id).first()
