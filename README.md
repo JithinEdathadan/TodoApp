@@ -20,3 +20,4 @@ ALGORITHM = "HS256"
 
 JWT_TOKEN_EXPIRY = 20`
 
+![img.png](img.png)
