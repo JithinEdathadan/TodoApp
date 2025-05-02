@@ -37,7 +37,10 @@ class ToDosServices:
             db.add(to_do_object)
             db.commit()
         except Exception as e:
-            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f'Exception occurred on data save: {repr(e)}')
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f'Exception occurred on data save: {repr(e)}'
+            )
 
     # update To-Do's by id and user ID
     # admin can update any user TO-Do's by passing is_admin = true and user_id =0
@@ -56,7 +59,10 @@ class ToDosServices:
             db.add(todo_mode)
             db.commit()
         except Exception as e:
-            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f'Exception occurred on data save: {repr(e)}')
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f'Exception occurred on data save: {repr(e)}'
+            )
 
     # Delete TO-Do's by id and user ID
     # Admin can delete any TO-Do's by passing the is_admin = True and user_id = 0
@@ -71,4 +77,7 @@ class ToDosServices:
             db.query(ToDosModel).filter(ToDosModel.id == todo_id).delete()
             db.commit()
         except Exception as e:
-            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f'Exception occurred on data save: {repr(e)}')
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f'Exception occurred on data save: {repr(e)}'
+            )

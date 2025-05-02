@@ -86,7 +86,10 @@ class AuthServices:
             db.add(user)
             db.commit()
         except Exception as e:
-            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f'Exception occurred on data save: {repr(e)}')
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f'Exception occurred on data save: {repr(e)}'
+            )
 
     async def get_current_user(self,token:Annotated[str , Depends(oauth2_bearer)]):
         if token is None:
@@ -115,7 +118,7 @@ class AuthServices:
             if user_role == "admin":
                 return True
             return False
-        except JWTError as e:
+        except JWTError:
             return False
 
 

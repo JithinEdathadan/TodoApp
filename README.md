@@ -23,4 +23,4 @@ This application allows users to add and manage TODO items. It includes separate
 7. [ ] DB_PORT = "5432"
 8. [ ] DB_NAME = "ToDoApplicationDatabase"`
 
-![img.png](img.png)
+![img.jpg](img.jpg)

@@ -11,3 +11,4 @@ class UsersModel(Base):
     user_role = Column(String)
     hashed_password = Column(String, nullable=False)
     is_active = Column(Boolean, default=True)
+    phone_number = Column(String)

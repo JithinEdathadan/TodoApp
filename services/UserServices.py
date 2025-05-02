@@ -32,7 +32,8 @@ class UserServices:
             user_request.email is None and
             user_request.first_name is None and
             user_request.last_name is None and
-            user_request.role is None
+            user_request.role is None and
+            user_request.phone_number is None
         ):
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Invalid request')
         user_model = db.query(UsersModel).filter(UsersModel.id == user_id).first()
@@ -40,7 +41,10 @@ class UserServices:
             raise HTTPException(status_code=404, detail=f'can\'t load user with id: {user_id}')
         if user_request.role:
             if user_request.role == 'admin' and not is_admin:
-                raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail='Admin role assign permission require')
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail='Admin role assign permission require'
+                )
             else:
                 user_model.role = user_request.role
         if user_request.username:
@@ -51,8 +55,13 @@ class UserServices:
             user_model.first_name = user_request.first_name
         if user_request.last_name:
             user_model.last_name = user_request.last_name
+        if user_request.phone_number:
+            user_model.phone_number = user_request.phone_number
         try:
             db.add(user_model)
             db.commit()
         except Exception as e:
-            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f'Exception occurred on data save: {repr(e)}')
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f'Exception occurred on data save: {repr(e)}'
+            )

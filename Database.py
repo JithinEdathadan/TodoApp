@@ -6,6 +6,7 @@ from TodoApp.Settings import get_settings
 settings = get_settings()
 class Database:
     def __init__(self):
+        # driver://user:pass@localhost/dbname
         SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.DB_USER_NAME}:{settings.DB_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}'
         self.engine = create_engine(SQLALCHEMY_DATABASE_URL)
         self.session_local = sessionmaker(autoflush=False, autocommit= False, bind=self.engine)
