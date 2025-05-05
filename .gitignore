@@ -6,5 +6,5 @@ __pycache__/
 #Database
 database.db
 .env
-
+.idea/	
 
