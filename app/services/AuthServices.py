@@ -39,7 +39,8 @@ class AuthServices:
                 last_name = user_data.last_name,
                 hashed_password = bcrypt_context.hash(user_data.password),
                 user_role = user_data.role,
-                is_active = True
+                is_active = True,
+                phone_number = user_data.phone_number
             )
             db.add(user_data_object)
             db.commit()

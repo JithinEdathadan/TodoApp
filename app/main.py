@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.Database import Database
-from app.routers import ToDosRoutes,AuthRoutes,AdminToDosRoutes, UserRoutes, AdminUsersRoutes
+from app.routers import ToDosRoutes,AuthRoutes,AdminToDosRoutes, UserRoutes, AdminUsersRoutes,HealthRoutes
 
 class Main:
     def __init__(self):
@@ -14,6 +14,7 @@ class Main:
         db_object.Base.metadata.create_all(bind=db_object.engine)
 
     def _include_routers(self):
+        self.app.include_router(HealthRoutes.router)
         self.app.include_router(AuthRoutes.router)
         self.app.include_router(ToDosRoutes.router)
         self.app.include_router(UserRoutes.router)
