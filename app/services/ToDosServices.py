@@ -1,9 +1,9 @@
 from fastapi import HTTPException, Depends
-from TodoApp.models.ToDosModel import ToDosModel
+from app.models.ToDosModel import ToDosModel
 from typing import Annotated
-from TodoApp.Database import Database
+from app.Database import Database
 from sqlalchemy.orm import Session
-from TodoApp.schemas.ToDosSchema import ToDosSchema
+from app.schemas.ToDosSchema import ToDosSchema
 from starlette import status
 
 class ToDosServices:

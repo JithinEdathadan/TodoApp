@@ -1,14 +1,14 @@
 from fastapi import APIRouter, Depends
 
-from TodoApp.schemas.UserSchema import UserSchema
-from TodoApp.Database import Database
+from app.schemas.UserSchema import UserSchema
+from app.Database import Database
 from typing import Annotated
 from sqlalchemy.orm import Session
 from starlette import status
-from TodoApp.services.AuthServices import AuthServices
+from app.services.AuthServices import AuthServices
 from fastapi.security import OAuth2PasswordRequestForm
-from TodoApp.schemas.AuthTokenResponseSchema import AuthTokenResponseSchema
-from TodoApp.schemas.AuthChangePasswordSchema import AuthChangePasswordSchema
+from app.schemas.AuthTokenResponseSchema import AuthTokenResponseSchema
+from app.schemas.AuthChangePasswordSchema import AuthChangePasswordSchema
 
 router = APIRouter(
     prefix="/auth",

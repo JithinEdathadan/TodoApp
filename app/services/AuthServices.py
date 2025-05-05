@@ -6,16 +6,16 @@ from typing import Annotated
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 
-from TodoApp.Database import Database
-from TodoApp.schemas.UserSchema import UserSchema
+from app.Database import Database
+from app.schemas.UserSchema import UserSchema
 from jose import jwt,JWTError
-from TodoApp.models.UsersModel import UsersModel
+from app.models.UsersModel import UsersModel
 from passlib.context import CryptContext
 from starlette import status
 
-from TodoApp.Settings import get_settings
+from app.Settings import get_settings
 
-from TodoApp.schemas.AuthChangePasswordSchema import AuthChangePasswordSchema
+from app.schemas.AuthChangePasswordSchema import AuthChangePasswordSchema
 
 
 bcrypt_context = CryptContext(schemes=['bcrypt'],deprecated="auto")

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from TodoApp.Database import Database
-from TodoApp.routers import ToDosRoutes,AuthRoutes,AdminToDosRoutes, UserRoutes, AdminUsersRoutes
+from app.Database import Database
+from app.routers import ToDosRoutes,AuthRoutes,AdminToDosRoutes, UserRoutes, AdminUsersRoutes
 
 class Main:
     def __init__(self):

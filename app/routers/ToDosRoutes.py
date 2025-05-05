@@ -4,11 +4,11 @@ from fastapi import APIRouter, Depends, Path
 from sqlalchemy.orm import Session
 from starlette import status
 
-from TodoApp.Database import Database
-from TodoApp.schemas.ToDosSchema import ToDosSchema
-from TodoApp.services.ToDosServices import ToDosServices
+from app.Database import Database
+from app.schemas.ToDosSchema import ToDosSchema
+from app.services.ToDosServices import ToDosServices
 
-from TodoApp.services.AuthServices import AuthServices
+from app.services.AuthServices import AuthServices
 
 router = APIRouter(
     prefix="/todo",

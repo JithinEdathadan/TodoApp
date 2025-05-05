@@ -10,7 +10,7 @@ This application allows users to add and manage TODO items. It includes separate
 * cd TodoApp/
 * setup .env file
 * pip install -r requirements.txt
-* fastapi dev main.py
+* fastapi dev app/main.py
 
 **.env file sample:**
 

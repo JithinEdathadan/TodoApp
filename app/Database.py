@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from TodoApp.models.base import Base
-from TodoApp.Settings import get_settings
+from app.models.base import Base
+from app.Settings import get_settings
 # import TodoApp.models # This triggers the import of all model classes
 settings = get_settings()
 class Database:

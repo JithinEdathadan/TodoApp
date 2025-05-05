@@ -1,12 +1,12 @@
 from fastapi import APIRouter, Depends
-from TodoApp.Database import Database
+from app.Database import Database
 from sqlalchemy.orm import Session
 from typing import Annotated
 from starlette import status
-from TodoApp.services.UserServices import UserServices
-from TodoApp.schemas.UserUpdateSchema import UserUpdateSchema
+from app.services.UserServices import UserServices
+from app.schemas.UserUpdateSchema import UserUpdateSchema
 
-from TodoApp.services.AuthServices import AuthServices
+from app.services.AuthServices import AuthServices
 
 router = APIRouter(
     prefix="/user",

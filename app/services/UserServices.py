@@ -1,10 +1,10 @@
 from fastapi import HTTPException, Depends
 
-from TodoApp.Database import Database
-from TodoApp.models.UsersModel import UsersModel
+from app.Database import Database
+from app.models.UsersModel import UsersModel
 from typing import Annotated
 from sqlalchemy.orm import Session
-from TodoApp.schemas.UserUpdateSchema import UserUpdateSchema
+from app.schemas.UserUpdateSchema import UserUpdateSchema
 from starlette import status
 
 

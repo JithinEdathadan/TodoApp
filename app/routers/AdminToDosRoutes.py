@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException, Depends, Path
-from TodoApp.Database import Database
+from app.Database import Database
 from sqlalchemy.orm import Session
 from typing import Annotated, Optional
 from starlette import status
-from TodoApp.services.AuthServices import AuthServices
-from TodoApp.services.ToDosServices import ToDosServices
-from TodoApp.schemas.ToDosSchema import ToDosSchema
-from TodoApp.services.UserServices import UserServices
+from app.services.AuthServices import AuthServices
+from app.services.ToDosServices import ToDosServices
+from app.schemas.ToDosSchema import ToDosSchema
+from app.services.UserServices import UserServices
 
 router = APIRouter(
     prefix="/admin/to-dos",
